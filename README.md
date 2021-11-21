@@ -16,7 +16,12 @@ Engenharia de Software II
     public static string Cn = "Data Source = DESKTOP-S28U9P5\\SQLEXPRESS; Initial Catalog = dbcomercio; Integrated Security=true"
     modificar DESKTOP-S28U9P5 para o nome do servidor local
 
-## Autenticação
-(Administrador) Usuario: admin 	senha: 123
+Tecnologias utilizadas:
+- C# .NET
+- Windows Forms
+- Banco de Dados (SQL SERVER | SQL SERVER MANAGEMNT STUDIO)
+
+Autenticação:
+- (Administrador) Usuario: admin 	senha: 123
 
 (Arquivo zip do SysComercio contém a pasta de todo o projeto)
