@@ -202,6 +202,7 @@ namespace CamadaApresentacao
                 {
                     if (this.eNovo)
                     {
+
                         resp = NCliente.Inserir(this.txtNome.Text.Trim().ToUpper(), 
                             this.txtSobrenome.Text, this.cbSexo.Text, this.dtData.Value, 
                             this.cbTipoDoc.Text, this.txtNumeroDoc.Text, 

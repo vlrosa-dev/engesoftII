@@ -426,8 +426,6 @@ namespace CamadaDados
                 ParId.Value = Cliente.Id;
                 SqlCmd.Parameters.Add(ParId);
 
-
-
                 //Executar o comando
 
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "A exclusão não foi feita";

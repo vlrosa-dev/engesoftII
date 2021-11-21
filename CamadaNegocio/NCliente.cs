@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using CamadaDados;
 
+
 namespace CamadaNegocio
 {
     public class NCliente
@@ -23,11 +24,10 @@ namespace CamadaNegocio
             Obj.Endereco = endereco;
             Obj.Telefone = telefone;
             Obj.Email = email;
-            
+
 
             return Obj.Inserir(Obj);
         }
-
 
         //Método Editar
         public static string Editar(int id, string nome, string sobrenome, 

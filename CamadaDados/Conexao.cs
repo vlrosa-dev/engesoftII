@@ -8,6 +8,6 @@ namespace CamadaDados
 {
     class Conexao
     {
-        public static string Cn = "Data Source = DESKTOP-CFCR613; Initial Catalog = dbcomercio; Integrated Security=true";
+        public static string Cn = "Data Source = DESKTOP-3G1SQOK\\SQLEXPRESS; Initial Catalog = dbcomercio; Integrated Security=true";
     }
 }
