@@ -17,7 +17,7 @@ Passos de utilização:
 Tecnologias utilizadas:
 - C# .NET
 - Windows Forms
-- Banco de Dados (SQL SERVER | SQL SERVER MANAGEMNT STUDIO)
+- Banco de Dados (SQL Server)
 
 Autenticação:
 - (Administrador) Usuario: admin 	senha: 123
