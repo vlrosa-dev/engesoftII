@@ -12,7 +12,7 @@ Passos de utilização:
 - Importar no SSMS o aplicativo da camada de dados: arquivo "dbcomercio.bacpac"
 - Na Camada de Dados, classe Conexao, mudar a linha 11:
     public static string Cn = "Data Source = DESKTOP-S28U9P5\\SQLEXPRESS; Initial Catalog = dbcomercio; Integrated Security=true"
-    modificar DESKTOP-S28U9P5 para o nome do servidor local
+    Modificar o nome do servidor (DESKTOP-S28U9P5) com base nas suas configurações do SQL Server.
 
 Tecnologias utilizadas:
 - C# .NET
