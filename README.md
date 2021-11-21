@@ -6,9 +6,7 @@ Alunos:
 - Rhayane Fabres
 - Victor Rosa
 
-Disciplina:
-Engenharia de Software II
-
+Passos de utilização:
 - Instalar SQL server
 - Instalar SQL server management studio
 - Importar no SSMS o aplicativo da camada de dados: arquivo "dbcomercio.bacpac"
