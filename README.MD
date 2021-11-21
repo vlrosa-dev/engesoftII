@@ -21,5 +21,3 @@ Tecnologias utilizadas:
 
 Autenticação:
 - (Administrador) Usuario: admin 	senha: 123
-
-(Arquivo zip do SysComercio contém a pasta de todo o projeto)
