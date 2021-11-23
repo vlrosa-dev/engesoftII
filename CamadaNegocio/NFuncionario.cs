@@ -12,7 +12,7 @@ namespace CamadaNegocio
     {
 
         //Método Inserir
-        public static string Inserir(string nome, string sobrenome, string sexo, DateTime data_nasc, string num_documento, string endereco, string telefone, string email, string acesso, string usuario, string senha)
+        public static string Inserir(string nome, string sobrenome, string sexo, DateTime data_nasc, string num_documento, string endereco, string telefone, double salario, string acesso, string usuario, string senha)
         {
             DFuncionario Obj = new CamadaDados.DFuncionario();
             Obj.Nome = nome;
@@ -22,7 +22,7 @@ namespace CamadaNegocio
             Obj.NumDocumento = num_documento;
             Obj.Endereco = endereco;
             Obj.Telefone = telefone;
-            Obj.Email = email;
+            Obj.Salario = salario;
             Obj.Acesso = acesso;
             Obj.Usuario = usuario;
             Obj.Senha = senha;
@@ -32,7 +32,7 @@ namespace CamadaNegocio
 
 
         //Método Editar
-        public static string Editar(int id, string nome, string sobrenome, string sexo, DateTime data_nasc, string num_documento, string endereco, string telefone, string email, string acesso, string usuario, string senha)
+        public static string Editar(int id, string nome, string sobrenome, string sexo, DateTime data_nasc, string num_documento, string endereco, string telefone, double salario, string acesso, string usuario, string senha)
         {
             DFuncionario Obj = new CamadaDados.DFuncionario();
             Obj.Id = id;
@@ -43,7 +43,7 @@ namespace CamadaNegocio
             Obj.NumDocumento = num_documento;
             Obj.Endereco = endereco;
             Obj.Telefone = telefone;
-            Obj.Email = email;
+            Obj.Salario = salario;
             Obj.Acesso = acesso;
             Obj.Usuario = usuario;
             Obj.Senha = senha;

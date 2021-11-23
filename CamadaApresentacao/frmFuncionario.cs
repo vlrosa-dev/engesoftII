@@ -47,7 +47,7 @@ namespace CamadaApresentacao
             this.txtEndereco.Text = string.Empty;
             this.txtTelefone.Text = string.Empty;
             this.txtNumeroDoc.Text = string.Empty;
-            this.txtEmail.Text = string.Empty;
+            this.txtSalario.Text = string.Empty;
             this.txtUsuario.Text = string.Empty;
             this.txtSenha.Text = string.Empty;
             
@@ -62,7 +62,7 @@ namespace CamadaApresentacao
             this.txtEndereco.ReadOnly = !valor;
             this.txtTelefone.ReadOnly = !valor;
             this.txtSenha.ReadOnly = !valor;
-            this.txtEmail.ReadOnly = !valor;
+            this.txtSalario.ReadOnly = !valor;
             this.cbAcesso.Enabled = valor;
             
             this.cbSexo.Enabled = valor;
@@ -202,12 +202,12 @@ namespace CamadaApresentacao
                 {
                     if (this.eNovo)
                     {
-                        resp = NFuncionario.Inserir(this.txtNome.Text.Trim().ToUpper(), this.txtSobrenome.Text, this.cbSexo.Text, this.dtData.Value, this.txtNumeroDoc.Text, this.txtEndereco.Text, this.txtTelefone.Text, this.txtEmail.Text, this.cbAcesso.Text, this.txtUsuario.Text, this.txtSenha.Text);
+                        resp = NFuncionario.Inserir(this.txtNome.Text.Trim().ToUpper(), this.txtSobrenome.Text, this.cbSexo.Text, this.dtData.Value, this.txtNumeroDoc.Text, this.txtEndereco.Text, this.txtTelefone.Text, Convert.ToDouble(this.txtSalario.Text), this.cbAcesso.Text, this.txtUsuario.Text, this.txtSenha.Text);
                     }
                     else
                     {
                         resp = NFuncionario.Editar(Convert.ToInt32(this.txtId.Text),
-                            this.txtNome.Text.Trim().ToUpper(), this.txtSobrenome.Text, this.cbSexo.Text, this.dtData.Value, this.txtNumeroDoc.Text, this.txtEndereco.Text, this.txtTelefone.Text, this.txtEmail.Text, this.cbAcesso.Text, this.txtUsuario.Text, this.txtSenha.Text);
+                            this.txtNome.Text.Trim().ToUpper(), this.txtSobrenome.Text, this.cbSexo.Text, this.dtData.Value, this.txtNumeroDoc.Text, this.txtEndereco.Text, this.txtTelefone.Text, Convert.ToDouble(this.txtSalario.Text), this.cbAcesso.Text, this.txtUsuario.Text, this.txtSenha.Text);
                     }
 
                     if (resp.Equals("OK"))
@@ -250,7 +250,7 @@ namespace CamadaApresentacao
             this.txtNumeroDoc.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["num_documento"].Value);
             this.txtEndereco.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["endereco"].Value);
             this.txtTelefone.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["telefone"].Value);
-            this.txtEmail.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["email"].Value);
+            this.txtSalario.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["salario"].Value);
             this.cbAcesso.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["acesso"].Value);
             this.txtUsuario.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["usuario"].Value);
             this.txtSenha.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["senha"].Value);

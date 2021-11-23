@@ -18,7 +18,8 @@ namespace CamadaDados
         private string _NumDocumento;
         private string _Endereco;
         private string _Telefone;
-        private string _Email;
+        private double _Salario;
+        private double _SalarioFinal;
         private string _Acesso;
         private string _Usuario;
         private string _Senha;
@@ -128,16 +129,16 @@ namespace CamadaDados
             }
         }
 
-        public string Email
+        public double Salario
         {
             get
             {
-                return _Email;
+                return _Salario;
             }
 
             set
             {
-                _Email = value;
+                _Salario = value;
             }
         }
 
@@ -193,12 +194,25 @@ namespace CamadaDados
             }
         }
 
+        public double SalarioFinal
+        {
+            get
+            {
+                return _SalarioFinal;
+            }
+
+            set
+            {
+                _SalarioFinal = value;
+            }
+        }
+
         public DFuncionario()
         {
 
         }
 
-        public DFuncionario(int id, string nome, string sobrenome, string sexo, DateTime data_nasc, string num_documento, string endereco, string telefone, string email, string acesso, string usuario, string senha)
+        public DFuncionario(int id, string nome, string sobrenome, string sexo, DateTime data_nasc, string num_documento, string endereco, string telefone, double salario, double salario_final, string acesso, string usuario, string senha)
         {
             this.Id = id;
             this.Nome = nome;
@@ -208,10 +222,11 @@ namespace CamadaDados
             this.NumDocumento = num_documento;
             this.Endereco = endereco;
             this.Telefone = telefone;
-            this.Email = email;
+            this.Salario = salario;
             this.Acesso = acesso;
             this.Usuario = usuario;
             this.Senha = senha;
+            this.SalarioFinal = salario_final;
         }
 
 
@@ -284,15 +299,16 @@ namespace CamadaDados
                 ParTelefone.SqlDbType = SqlDbType.VarChar;
                 ParTelefone.Size = 10;
                 ParTelefone.Value = Funcionario.Telefone;
+                ParTelefone.Value = Funcionario.Telefone;
                 SqlCmd.Parameters.Add(ParTelefone);
 
 
-                SqlParameter ParEmail = new SqlParameter();
-                ParEmail.ParameterName = "@email";
-                ParEmail.SqlDbType = SqlDbType.VarChar;
-                ParEmail.Size = 50;
-                ParEmail.Value = Funcionario.Endereco;
-                SqlCmd.Parameters.Add(ParEmail);
+                SqlParameter ParSalario = new SqlParameter();
+                ParSalario.ParameterName = "@salario";
+                ParSalario.SqlDbType = SqlDbType.Float;
+                ParSalario.Size = 50;
+                ParSalario.Value = Funcionario.Salario;
+                SqlCmd.Parameters.Add(ParSalario);
 
 
                 SqlParameter ParAcesso = new SqlParameter();
@@ -410,12 +426,12 @@ namespace CamadaDados
                 SqlCmd.Parameters.Add(ParTelefone);
 
 
-                SqlParameter ParEmail = new SqlParameter();
-                ParEmail.ParameterName = "@email";
-                ParEmail.SqlDbType = SqlDbType.VarChar;
-                ParEmail.Size = 50;
-                ParEmail.Value = Funcionario.Endereco;
-                SqlCmd.Parameters.Add(ParEmail);
+                SqlParameter ParSalario = new SqlParameter();
+                ParSalario.ParameterName = "@salario";
+                ParSalario.SqlDbType = SqlDbType.Float;
+                ParSalario.Size = 50;
+                ParSalario.Value = Funcionario.Salario;
+                SqlCmd.Parameters.Add(ParSalario);
 
 
                 SqlParameter ParAcesso = new SqlParameter();
@@ -457,6 +473,43 @@ namespace CamadaDados
             }
             return resp;
 
+        }
+
+        // Método Editar
+        public static string EditarSalarioFinal(int idFuncionario)
+        {
+            string resp = "";
+            SqlConnection SqlCon = new SqlConnection();
+            
+            SqlCon.ConnectionString = Conexao.Cn;
+            SqlCon.Open();
+
+            try
+            {
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "speditarSalarioFinal_funcionario"; // procedure
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParId = new SqlParameter();
+                ParId.ParameterName = "@id";
+                ParId.SqlDbType = SqlDbType.Int;
+                ParId.Value = idFuncionario;
+                SqlCmd.Parameters.Add(ParId);
+
+                resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "A edição não foi feita";
+
+            }
+            catch (Exception ex)
+            {
+                resp = ex.Message;
+            }
+
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return resp;
         }
 
 
