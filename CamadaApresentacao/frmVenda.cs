@@ -40,6 +40,8 @@ namespace CamadaApresentacao
             this.txtIdProduto.Enabled = false;
             this.txtCliente.Enabled = false;
             this.txtProduto.Enabled = false;
+            this.cmbParcelas.Enabled = false;
+            this.cmbPagamento.Enabled = false;
         }
 
 
@@ -67,6 +69,8 @@ namespace CamadaApresentacao
             this.txtSerie.Text = string.Empty;
             this.txtCorrelativo.Text = string.Empty;
             this.txtImposto.Text = string.Empty;
+            this.cmbPagamento.Text = string.Empty;
+            this.cmbParcelas.Text = string.Empty;
             
             this.lblTotalPagar.Text = "0,0";
             this.CriarTabela();
@@ -115,6 +119,7 @@ namespace CamadaApresentacao
             {
                 this.Habilitar(true);
                 this.btnNovo.Enabled = false;
+                this.cmbPagamento.Enabled = true;
                 this.btnSalvar.Enabled = true;
                 this.btnBuscar.Enabled = false;
                 this.btnCancelar.Enabled = true;
@@ -131,6 +136,8 @@ namespace CamadaApresentacao
                 this.btnCancelar.Enabled = false;
                 this.btnBuscarCliente.Enabled = false;
                 this.btnBuscarProduto.Enabled = false;
+                this.cmbParcelas.Enabled = false;
+                this.cmbPagamento.Enabled = false;
             }
 
         }
@@ -431,7 +438,23 @@ namespace CamadaApresentacao
                         //codigo para adicionar ao data list
                         decimal subTotal = Convert.ToDecimal(this.txtquantidade.Text) * Convert.ToDecimal(this.txtPrecoVenda.Text)-Convert.ToDecimal(this.txtDesconto.Text);
                         totalPago = totalPago + subTotal;
-                        this.lblTotalPagar.Text = totalPago.ToString("R$ #0.00#");
+
+                        if(totalPago < 1000)
+                        {
+                            decimal totalRecalculado = totalPago - (totalPago * Convert.ToDecimal(0.03));
+                            this.lblTotalPagar.Text = totalRecalculado.ToString("R$ #0.00#");
+                        }
+                        else
+                        {
+                            decimal totalRecalculado = totalPago - (totalPago * Convert.ToDecimal(0.05));
+                            this.lblTotalPagar.Text = totalRecalculado.ToString("R$ #0.00#");
+                        }
+
+                        /*if(totalPago > 500 && this.cmbPagamento.SelectedItem.ToString() == "Cartão de Crédito")
+                        {
+                            this.cmbParcelas.Enabled = true;
+                        }*/
+                        
 
                         DataRow row = this.dtDetalhe.NewRow();
                         row["iddetalhe_entrada"] = Convert.ToInt32(this.txtIdProduto.Text);
@@ -503,5 +526,38 @@ namespace CamadaApresentacao
             this.dataLista.Enabled = true;
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbPagamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (totalPago > 500 && this.cmbPagamento.SelectedItem.ToString() == "Cartão de Crédito")
+            {
+                this.cmbParcelas.Enabled = true;
+            }
+            else
+            {
+                this.cmbParcelas.Enabled = false;
+                this.cmbParcelas.Text = null;
+            }
+
+        }
+
+        private void cmbParcelas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

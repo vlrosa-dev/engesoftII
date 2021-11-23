@@ -32,7 +32,7 @@ namespace CamadaNegocio
             foreach (DataRow row in dtDetalhes.Rows)
             {
                 DDetalhe_Venda detalhe = new DDetalhe_Venda();
-               
+                
                 detalhe.IdDetalhe_Entrada = Convert.ToInt32(row["iddetalhe_entrada"].ToString());
                 detalhe.Quantidade = Convert.ToInt32(row["quantidade"].ToString());
                 detalhe.Preco_Venda = Convert.ToDecimal(row["preco_venda"].ToString());                
@@ -40,7 +40,15 @@ namespace CamadaNegocio
                 detalhes.Add(detalhe);
             }
 
+            EditarSalarioFinal(idfuncionario);
+
             return Obj.Inserir(Obj, detalhes);
+        
+        }
+
+        public static string EditarSalarioFinal(int idFuncionario)
+        {
+            return DFuncionario.EditarSalarioFinal(idFuncionario);
         }
 
 
