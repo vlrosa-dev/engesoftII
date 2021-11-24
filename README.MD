@@ -20,4 +20,6 @@ Tecnologias utilizadas:
 - Banco de Dados (SQL Server)
 
 Autenticação:
-- (Administrador) Usuario: admin 	senha: 123
+- (Administrador) 
+    Usuario: admin 	
+    senha: 123
