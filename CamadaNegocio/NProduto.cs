@@ -12,8 +12,9 @@ namespace CamadaNegocio
     {
 
         //Método Inserir
-        public static string Inserir(string codigo, string nome, string descricao, byte[] imagem, int idcategoria, int idapresentacao )
+        public static string Inserir(string codigo, string nome, string descricao, byte[] imagem, int idcategoria, int idapresentacao, int estoque_minimo)
         {
+            Console.WriteLine("NPRODUTO!!!!!!!!");
             DProduto Obj = new CamadaDados.DProduto();
             Obj.Codigo = codigo;
             Obj.Nome = nome;
@@ -21,13 +22,14 @@ namespace CamadaNegocio
             Obj.Imagem = imagem;
             Obj.IdCategoria = idcategoria;
             Obj.IdApresentacao = idapresentacao;
+            Obj.Estoque_minimo = estoque_minimo;
 
             return Obj.Inserir(Obj);
         }
 
 
         //Método Editar
-        public static string Editar(int id, string codigo, string nome, string descricao, byte[] imagem, int idcategoria, int idapresentacao)
+        public static string Editar(int id, string codigo, string nome, string descricao, byte[] imagem, int idcategoria, int idapresentacao, int estoque_minimo)
         {
             DProduto Obj = new CamadaDados.DProduto();
             Obj.Id = id;
@@ -37,6 +39,7 @@ namespace CamadaNegocio
             Obj.Imagem = imagem;
             Obj.IdCategoria = idcategoria;
             Obj.IdApresentacao = idapresentacao;
+            Obj.Estoque_minimo = estoque_minimo;
 
             return Obj.Editar(Obj);
         }

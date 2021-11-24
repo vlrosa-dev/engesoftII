@@ -72,6 +72,7 @@ namespace CamadaApresentacao
             this.txtCodigo.Text = string.Empty;
             this.txtIdCategoria.Text = string.Empty;
             this.txtCategoria.Text = string.Empty;
+            this.lblEstoqueMinimo.Text = string.Empty;
             this.pxImagem.Image = global::CamadaApresentacao.Properties.Resources.semImagem;
         }
 
@@ -226,11 +227,11 @@ namespace CamadaApresentacao
 
                     if (this.eNovo)
                     {
-                        resp = NProduto.Inserir(this.txtCodigo.Text, this.txtNome.Text.Trim().ToUpper(), this.txtDescricao.Text.Trim(), imagem, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbApresentacao.SelectedValue));
+                        resp = NProduto.Inserir(this.txtCodigo.Text, this.txtNome.Text.Trim().ToUpper(), this.txtDescricao.Text.Trim(), imagem, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbApresentacao.SelectedValue), Convert.ToInt32(this.lblEstoqueMinimo.Text));
                     }
                     else
                     {
-                        resp = NProduto.Editar(Convert.ToInt32(this.txtId.Text), this.txtCodigo.Text, this.txtNome.Text.Trim().ToUpper(), this.txtDescricao.Text.Trim(), imagem, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbApresentacao.SelectedValue));
+                        resp = NProduto.Editar(Convert.ToInt32(this.txtId.Text), this.txtCodigo.Text, this.txtNome.Text.Trim().ToUpper(), this.txtDescricao.Text.Trim(), imagem, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbApresentacao.SelectedValue), Convert.ToInt32(this.lblEstoqueMinimo.Text));
                     }
 
                     if (resp.Equals("OK"))
@@ -314,6 +315,7 @@ namespace CamadaApresentacao
             this.txtIdCategoria.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["idcategoria"].Value);
             this.txtCategoria.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["Categoria"].Value);
             this.cbApresentacao.SelectedValue = Convert.ToString(this.dataLista.CurrentRow.Cells["idapresentacao"].Value);
+            this.lblEstoqueMinimo.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["estoque_minimo"].Value);
            
 
             this.tabControl1.SelectedIndex = 1;
@@ -386,6 +388,16 @@ namespace CamadaApresentacao
         {
             frmRelatorioProduto frm = new frmRelatorioProduto();
             frm.ShowDialog();
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

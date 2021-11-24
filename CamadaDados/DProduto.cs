@@ -18,6 +18,7 @@ namespace CamadaDados
         private int _IdCategoria;
         private int _IdApresentacao;
         private string _TextoBuscar;
+        private int estoque_minimo;
 
         public int Id
         {
@@ -123,12 +124,15 @@ namespace CamadaDados
             }
         }
 
+        public int Estoque_minimo { get => estoque_minimo; set => estoque_minimo = value; }
+
         public DProduto()
         {
 
         }
 
-        public DProduto(int id, string codigo, string nome, string descricao, byte[] imagem, int idcategoria, int idapresentacao, string textobuscar)
+        public DProduto(int id, string codigo, string nome, 
+            string descricao, byte[] imagem, int idcategoria, int idapresentacao, string textobuscar, int estoque_minimo)
         {
             this.Id = id;
             this.Codigo = codigo;
@@ -138,6 +142,7 @@ namespace CamadaDados
             this.IdCategoria = idcategoria;
             this.IdApresentacao = idapresentacao;
             this.TextoBuscar = textobuscar;
+            this.Estoque_minimo = estoque_minimo;
 
         }
 
@@ -148,6 +153,7 @@ namespace CamadaDados
             SqlConnection SqlCon = new SqlConnection();
             try
             {
+                Console.WriteLine("DBINSERIR");
                 //codigo
                 SqlCon.ConnectionString = Conexao.Cn;
                 SqlCon.Open();
@@ -205,6 +211,12 @@ namespace CamadaDados
                 ParIdApresentacao.SqlDbType = SqlDbType.Int;
                 ParIdApresentacao.Value = Produto.IdApresentacao;
                 SqlCmd.Parameters.Add(ParIdApresentacao);
+
+                SqlParameter ParIdEstoqueMinimo = new SqlParameter();
+                ParIdEstoqueMinimo.ParameterName = "@estoque_minimo";
+                ParIdEstoqueMinimo.SqlDbType = SqlDbType.Int;
+                ParIdEstoqueMinimo.Value = Produto.Estoque_minimo;
+                SqlCmd.Parameters.Add(ParIdEstoqueMinimo);
 
                 //Executar o comando
 
@@ -291,10 +303,15 @@ namespace CamadaDados
                 ParIdApresentacao.Value = Produto.IdApresentacao;
                 SqlCmd.Parameters.Add(ParIdApresentacao);
 
+                SqlParameter ParIdEstoqueMinimo = new SqlParameter();
+                ParIdEstoqueMinimo.ParameterName = "@estoque_minimo";
+                ParIdEstoqueMinimo.SqlDbType = SqlDbType.Int;
+                ParIdEstoqueMinimo.Value = Produto.Estoque_minimo;
+                SqlCmd.Parameters.Add(ParIdEstoqueMinimo);
+
+
                 //Executar o comando
-
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "A edição não foi feita";
-
 
             }
             catch (Exception ex)
